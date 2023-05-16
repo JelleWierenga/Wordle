@@ -1,12 +1,31 @@
 import random
 
+def reveal_word(hidden_word):
+    print(f"The hidden word was '{hidden_word}'.")
+
+def show_guessed_words(guessed_words):
+    if guessed_words:
+        print("Words already guessed:")
+        for word in guessed_words:
+            print(word)
+    else:
+        print("No words have been guessed yet.")
+
 score = 0
 word_list = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "imbu", "jackfruit", "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", "strawberry", "tangerine"]
 hidden_word = random.sample(word_list, 1)[0]  # Access the first element in the list
 guessed_words = []
 
 while score < 10:
-    guess = input("Your guess: ")
+    guess = input("Your guess (type 'stop' to end the game, or 'see words' to view guessed words): ")
+
+    if guess.lower() == "stop":
+        reveal_word(hidden_word)
+        break
+
+    if guess.lower() == "see words":
+        show_guessed_words(guessed_words)
+        continue
 
     if guess in guessed_words:
         print("You've already guessed that word. Try again.")
