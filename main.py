@@ -12,8 +12,10 @@ def show_guessed_words(guessed_words):
         print("No words have been guessed yet.")
 
 score = 0
-word_list = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "imbu", "jackfruit", "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", "strawberry", "tangerine"]
-hidden_word = random.sample(word_list, 1)[0]  # Access the first element in the list
+with open("words.txt") as file:
+    word_list = [line.strip() for line in file.readlines()]
+
+hidden_word = random.choice(word_list)
 guessed_words = []
 
 while score < 10:
